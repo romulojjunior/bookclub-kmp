@@ -3,55 +3,43 @@ package com.demo.bookclubkmp.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.demo.bookclubkmp.domain.repositories.IBookRepository
-import com.demo.bookclubkmp.di.AppDIKoin
-import kotlinx.coroutines.launch
-import org.koin.core.component.get
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.demo.bookclubkmp.android.ui.AppRoute
+import com.demo.bookclubkmp.android.ui.screens.auth.AuthViewModel
+import com.demo.bookclubkmp.android.ui.screens.auth.SignInScreen
+import com.demo.bookclubkmp.android.ui.screens.home.HomeScreen
+import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
-                HomeScreen()
-            }
-        }
-    }
-}
-
-
-@Composable
-fun HomeScreen() {
-    val scope = rememberCoroutineScope()
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
-    ) {
-        Column {
-            Text("Android Home")
-            Button(onClick = {
-                scope.launch {
-                    val result = AppDIKoin.get<IBookRepository>().searchByName("Travelling")
-                    println(result)
+            val navController = rememberNavController()
+            NavHost(
+                navController = navController,
+                startDestination = AppRoute.signInScreenPath
+            ) {
+                composable(AppRoute.signInScreenPath) {
+                    val authViewModel by inject<AuthViewModel>()
+                    MyApplicationTheme {
+                        SignInScreen(
+                            signIn = authViewModel::signIn,
+                            uiState = authViewModel.uiState,
+                            navigateToHome = {
+                                navController.navigate(AppRoute.homeScreenPath) {
+                                    popUpTo(AppRoute.signInScreenPath) { inclusive = true }
+                                }
+                            }
+                        )
+                    }
                 }
-            }) {
-                Text("Click me!")
+
+                composable(AppRoute.homeScreenPath) {
+                    HomeScreen()
+                }
             }
         }
-    }
-}
-
-@Preview
-@Composable
-fun HomeScreenPReview() {
-    MaterialTheme {
-        HomeScreen()
     }
 }
