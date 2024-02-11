@@ -23,20 +23,34 @@ class HomeViewModel (private val searchBookByNameUC: ISearchBookByNameUC) : View
     private val _uiState = mutableStateOf(UIState())
     val uiState = _uiState
 
+
+    data class SearchUIState(
+        val searchResultBooks: List<Book> = emptyList(),
+        val exception: Any? = null,
+        val isLoading: Boolean = false
+    )
+
+    private val _searchUIState = mutableStateOf(SearchUIState())
+    val searchUIState = _searchUIState
+
     override
     fun searchBookByName(name: String) {
-        _uiState.value = _uiState.value.copy(isLoading = true, exception = null)
+        _searchUIState.value = _searchUIState.value.copy(isLoading = true,searchResultBooks = emptyList(), exception = null)
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val books = searchBookByNameUC.execute(name)
-                _uiState.value = _uiState.value.copy(searchResultBooks = books, isLoading = false)
+                _searchUIState.value = _searchUIState.value.copy(searchResultBooks = books, isLoading = false)
             } catch (e: Exception) {
-                _uiState.value = _uiState.value.copy(exception = e, isLoading = false)
+                _searchUIState.value = _searchUIState.value.copy(exception = e, isLoading = false)
             }
         }
     }
 
     override fun loadFeatureBooks(name: String) {
+        if (_uiState.value.featuredBooks.isNotEmpty()) {
+            return
+        }
+
         _uiState.value = _uiState.value.copy(isLoading = true, exception = null)
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -49,6 +63,10 @@ class HomeViewModel (private val searchBookByNameUC: ISearchBookByNameUC) : View
     }
 
     override fun loadRecommendedBooks(name: String) {
+        if (_uiState.value.recommendedBooks.isNotEmpty()) {
+            return
+        }
+
         _uiState.value = _uiState.value.copy(isLoading = true, exception = null)
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -61,6 +79,10 @@ class HomeViewModel (private val searchBookByNameUC: ISearchBookByNameUC) : View
     }
 
     override fun loadFavoritesBooks(name: String) {
+        if (_uiState.value.featuredBooks.isNotEmpty()) {
+            return
+        }
+
         _uiState.value = _uiState.value.copy(isLoading = true, exception = null)
         viewModelScope.launch(Dispatchers.IO) {
             try {
