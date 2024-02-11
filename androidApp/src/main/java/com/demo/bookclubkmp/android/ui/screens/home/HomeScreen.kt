@@ -14,9 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.demo.bookclubkmp.android.MyApplicationTheme
 import com.demo.bookclubkmp.android.ui.components.UIBookCard
+import com.demo.bookclubkmp.android.ui.components.UIError
 import com.demo.bookclubkmp.android.ui.components.UILoading
 import com.demo.bookclubkmp.android.ui.components.UIPageHeader
 import com.demo.bookclubkmp.domain.entities.Book
+import java.net.UnknownHostException
 
 @Composable
 fun HomeScreen(
@@ -30,6 +32,17 @@ fun HomeScreen(
         loadFeatureBooks("Travel")
         loadRecommendedBooks("Kotlin")
         loadFavoritesBooks("Android")
+    }
+
+    if (uiState.value.exception is UnknownHostException) {
+        UIError(
+            onRetry = {
+                loadFeatureBooks("Travel")
+                loadRecommendedBooks("Kotlin")
+                loadFavoritesBooks("Android")
+            }
+        )
+        return
     }
 
     if (uiState.value.isLoading) {

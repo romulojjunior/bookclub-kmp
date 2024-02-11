@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BookClub KMP</string>
+
+    <!-- Login -->
     <string name="login_username">Username</string>
     <string name="login_password">Password</string>
     <string name="login_sign_in_success">Sign-In Success!</string>
@@ -9,4 +11,8 @@
     <string name="login_sign_in_error_password_format">Invalid password format</string>
     <string name="login_signin">Sign-in</string>
     <string name="login_forget_password">Forget password</string>
+
+    <!-- Errors msg -->
+    <string name="error_generic_title">Sorry</string>
+    <string name="error_generic_description">Something wont wrong!</string>
 </resources>
