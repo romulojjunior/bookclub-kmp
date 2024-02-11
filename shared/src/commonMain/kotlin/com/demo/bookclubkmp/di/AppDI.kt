@@ -29,4 +29,5 @@ object AppDIKoin : KoinComponent {
 
     // For ios injection
     val bookRepository: IBookRepository by inject()
+    val signInUC: ISignInUC by inject()
 }

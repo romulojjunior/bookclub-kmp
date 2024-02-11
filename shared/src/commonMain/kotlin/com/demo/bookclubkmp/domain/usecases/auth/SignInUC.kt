@@ -4,6 +4,7 @@ import com.demo.bookclubkmp.domain.entities.Session
 import com.demo.bookclubkmp.domain.repositories.IAuthRepository
 
 interface ISignInUC {
+    @Throws(Throwable::class, InvalidUsernameException::class, InvalidPasswordException::class)
     suspend fun execute(username: String, password: String): Session
 }
 class SignInUC(private val authRepository: IAuthRepository) : ISignInUC {

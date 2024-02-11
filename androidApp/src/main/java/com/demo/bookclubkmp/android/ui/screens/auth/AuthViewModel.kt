@@ -20,11 +20,11 @@ class AuthViewModel (private val signInUC: ISignInUC) : ViewModel(), IAuthViewMo
     val uiState = _uiState
 
     override
-    fun signIn(email: String, password: String) {
+    fun signIn(username: String, password: String) {
         _uiState.value = _uiState.value.copy(isLoading = true, exception = null)
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val session = signInUC.execute(email, password)
+                val session = signInUC.execute(username, password)
                 _uiState.value = _uiState.value.copy(session = session, isLoading = false)
             } catch (e: Exception) {
                 _uiState.value = _uiState.value.copy(exception = e, isLoading = false)
