@@ -1,5 +1,6 @@
 package com.demo.bookclubkmp.android.ui.screens.auth
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,6 +28,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.demo.bookclubkmp.android.MyApplicationTheme
 import com.demo.bookclubkmp.android.R
 import com.demo.bookclubkmp.android.ui.components.UILoading
 import com.demo.bookclubkmp.domain.usecases.auth.InvalidPasswordException
@@ -137,5 +139,17 @@ fun SignInScreen(
 @Preview
 @Composable
 fun LoginScreenPreview() {
-    SignInScreen()
+    MyApplicationTheme {
+        SignInScreen()
+    }
+}
+
+@Composable
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+fun LoginScreenPreviewNight() {
+    MyApplicationTheme {
+        SignInScreen()
+    }
 }

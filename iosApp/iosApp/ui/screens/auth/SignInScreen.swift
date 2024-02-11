@@ -23,7 +23,7 @@ struct SignInScreen: View {
             if (viewModel.exception != nil) {
                 Text("Sigin error. Try again.").foregroundStyle(.red)
             }
-            
+
             Button("SignIn") {
                 viewModel.signIn(username: username, password:  password)
             }.padding(.top, 50) 

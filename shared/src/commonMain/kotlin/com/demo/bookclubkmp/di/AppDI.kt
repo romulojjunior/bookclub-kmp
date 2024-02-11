@@ -6,6 +6,8 @@ import com.demo.bookclubkmp.domain.repositories.IAuthRepository
 import com.demo.bookclubkmp.domain.repositories.IBookRepository
 import com.demo.bookclubkmp.domain.usecases.auth.ISignInUC
 import com.demo.bookclubkmp.domain.usecases.auth.SignInUC
+import com.demo.bookclubkmp.domain.usecases.book.ISearchBookByNameUC
+import com.demo.bookclubkmp.domain.usecases.book.SearchBookByNameUC
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
@@ -17,7 +19,11 @@ val repositoryModules = module {
 }
 
 val usecaseModules = module {
+    // Auth
     single<ISignInUC> { SignInUC(authRepository = get()) }
+
+    // Books
+    single<ISearchBookByNameUC> { SearchBookByNameUC(bookRepository = get())  }
 }
 
 object AppDIKoin : KoinComponent {
@@ -28,6 +34,6 @@ object AppDIKoin : KoinComponent {
     }
 
     // For ios injection
-    val bookRepository: IBookRepository by inject()
     val signInUC: ISignInUC by inject()
+    val searchBookByNameUC: ISearchBookByNameUC by inject()
 }

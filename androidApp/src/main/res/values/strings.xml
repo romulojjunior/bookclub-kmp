@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">BookClub KMP</string>
     <string name="login_username">Username</string>
     <string name="login_password">Password</string>
     <string name="login_sign_in_success">Sign-In Success!</string>
