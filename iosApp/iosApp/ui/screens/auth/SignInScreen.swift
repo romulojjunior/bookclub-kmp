@@ -2,12 +2,18 @@ import SwiftUI
 import shared
 
 struct SignInScreen: View {
+    
+    init(navigateTo: @escaping (Route) -> Void) {
+        self.navigateTo = navigateTo
+        self.viewModel = viewModel
+    }
+    private let navigateTo: (Route) -> Void
+    
+    @State private var username: String = ""
+    @State private var password: String = ""
     @State private var viewModel = AuthViewModel(
         signInUC: AppDIKoin().signInUC
     )
-
-    @State private var username: String = ""
-    @State private var password: String = ""
     
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
@@ -26,15 +32,22 @@ struct SignInScreen: View {
 
             Button("SignIn") {
                 viewModel.signIn(username: username, password:  password)
-            }.padding(.top, 50) 
+                if (viewModel.session != nil) {
+                    navigateTo(Route.home)
+                }
+            }.padding(.top, 50)
             
             Text("Forget password").foregroundStyle(.gray).padding(30) 
         }
+        
+        .navigationTitle("SignIn")
     }
 }
 
 struct SignInScreen_Previews: PreviewProvider {
+    private let navigationPath = NavigationPath()
+    
     static var previews: some View {
-        SignInScreen()
+        SignInScreen(navigateTo: { r in })
     }
 }

@@ -10,8 +10,14 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		F122A0382B7A30890050572C /* ImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122A0372B7A30890050572C /* ImageExt.swift */; };
+		F122A03B2B7A310B0050572C /* UIAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122A03A2B7A310B0050572C /* UIAsyncImage.swift */; };
+		F122A03D2B7A33640050572C /* UIPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122A03C2B7A33640050572C /* UIPageHeader.swift */; };
+		F122A03F2B7A376A0050572C /* BooksCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F122A03E2B7A376A0050572C /* BooksCard.swift */; };
 		F174D3352B7835D000CE6689 /* SignInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174D3342B7835D000CE6689 /* SignInScreen.swift */; };
 		F174D3372B78363400CE6689 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174D3362B78363400CE6689 /* AuthViewModel.swift */; };
+		F1A4BB0E2B79A78E006423C3 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A4BB0D2B79A78E006423C3 /* HomeScreen.swift */; };
+		F1A4BB102B79ABA9006423C3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A4BB0F2B79ABA9006423C3 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,8 +39,14 @@
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F122A0372B7A30890050572C /* ImageExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExt.swift; sourceTree = "<group>"; };
+		F122A03A2B7A310B0050572C /* UIAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAsyncImage.swift; sourceTree = "<group>"; };
+		F122A03C2B7A33640050572C /* UIPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageHeader.swift; sourceTree = "<group>"; };
+		F122A03E2B7A376A0050572C /* BooksCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCard.swift; sourceTree = "<group>"; };
 		F174D3342B7835D000CE6689 /* SignInScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInScreen.swift; sourceTree = "<group>"; };
 		F174D3362B78363400CE6689 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		F1A4BB0D2B79A78E006423C3 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		F1A4BB0F2B79ABA9006423C3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +104,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F122A0362B7A30720050572C /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F122A0372B7A30890050572C /* ImageExt.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		F122A0392B7A30E80050572C /* views */ = {
+			isa = PBXGroup;
+			children = (
+				F122A03A2B7A310B0050572C /* UIAsyncImage.swift */,
+				F122A03C2B7A33640050572C /* UIPageHeader.swift */,
+				F122A03E2B7A376A0050572C /* BooksCard.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		F174D3312B78357400CE6689 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				F122A0392B7A30E80050572C /* views */,
+				F122A0362B7A30720050572C /* extensions */,
 				F174D3322B78359100CE6689 /* screens */,
 			);
 			path = ui;
@@ -103,6 +135,7 @@
 		F174D3322B78359100CE6689 /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				F1A4BB0C2B79A756006423C3 /* home */,
 				F174D3332B7835A700CE6689 /* auth */,
 			);
 			path = screens;
@@ -115,6 +148,15 @@
 				F174D3362B78363400CE6689 /* AuthViewModel.swift */,
 			);
 			path = auth;
+			sourceTree = "<group>";
+		};
+		F1A4BB0C2B79A756006423C3 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				F1A4BB0D2B79A78E006423C3 /* HomeScreen.swift */,
+				F1A4BB0F2B79ABA9006423C3 /* HomeViewModel.swift */,
+			);
+			path = home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,8 +251,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A4BB0E2B79A78E006423C3 /* HomeScreen.swift in Sources */,
+				F122A03D2B7A33640050572C /* UIPageHeader.swift in Sources */,
 				F174D3372B78363400CE6689 /* AuthViewModel.swift in Sources */,
+				F122A03B2B7A310B0050572C /* UIAsyncImage.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				F122A03F2B7A376A0050572C /* BooksCard.swift in Sources */,
+				F122A0382B7A30890050572C /* ImageExt.swift in Sources */,
+				F1A4BB102B79ABA9006423C3 /* HomeViewModel.swift in Sources */,
 				F174D3352B7835D000CE6689 /* SignInScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,7 @@ interface IBookRepository {
 }
 class BookRepository : IBookRepository {
     private val apiHost = "https://www.googleapis.com/books"
-    private var enableMock = false;
+    private var enableMock = false
 
     override
     suspend fun searchByName(name: String): List<Book> {

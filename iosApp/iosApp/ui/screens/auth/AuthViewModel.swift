@@ -22,10 +22,11 @@ class AuthViewModel : IAuthViewModel {
         signInUC.execute(username: username, password: password) { session, error in
             self.isLoading = false
             if (error != nil) {
+                self.session = nil
                 self.exception = error
             } else {
-                self.session = session
                 self.exception = nil
+                self.session = session
             }
         }
     }
