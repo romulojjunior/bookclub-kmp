@@ -20,6 +20,7 @@
 		F174D3372B78363400CE6689 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F174D3362B78363400CE6689 /* AuthViewModel.swift */; };
 		F1A4BB0E2B79A78E006423C3 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A4BB0D2B79A78E006423C3 /* HomeScreen.swift */; };
 		F1A4BB102B79ABA9006423C3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A4BB0F2B79ABA9006423C3 /* HomeViewModel.swift */; };
+		F1DF1A752B7AA035009B0FBC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F1DF1A742B7AA035009B0FBC /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,7 @@
 		F174D3362B78363400CE6689 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		F1A4BB0D2B79A78E006423C3 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		F1A4BB0F2B79ABA9006423C3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F1DF1A742B7AA035009B0FBC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
+				F1DF1A742B7AA035009B0FBC /* Localizable.xcstrings */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"en-US",
 			);
 			mainGroup = 7555FF72242A565900829871;
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
@@ -235,6 +239,7 @@
 			files = (
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
+				F1DF1A752B7AA035009B0FBC /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,7 @@ struct SignInScreen: View {
     
     var body: some View {
         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            Text("BookClub").font(.largeTitle).padding(.bottom, 50)
+            Text("AppName").font(.largeTitle).padding(.bottom, 50)
             
             TextField("Username", text: $username).padding(.horizontal, 36).padding(.bottom, 16)
             TextField("Password", text: $password).padding(.horizontal, 36)

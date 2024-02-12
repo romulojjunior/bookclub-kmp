@@ -21,7 +21,7 @@ struct BooksCard: View {
                 ForEach(books, id: \.self) { book in
                     VStack() {
                         UIAsyncImage(url: book.thumbnail ?? book.smallThumbnail ?? "")
-                        Text("item \(book.title)").frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/).font(.caption).lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                        Text(book.title).frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/).font(.caption).lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                     }
                 }
             }
