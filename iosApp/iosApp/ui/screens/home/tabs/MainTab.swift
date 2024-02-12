@@ -24,17 +24,17 @@ struct MainTab: View {
         } else if (viewModel.isLoading) {
             ProgressView()
         }
-
-
+        
+        
         ScrollView {
             if (!viewModel.recommendedBooks.isEmpty) {
                 BooksCard(label: "Favorites", books: viewModel.favoritesBooks)
             }
-
+            
             if (!viewModel.featuredBooks.isEmpty) {
                 BooksCard(label: "Featured", books: viewModel.featuredBooks)
             }
-
+            
             if (!viewModel.recommendedBooks.isEmpty) {
                 BooksCard(label: "Recommended", books: viewModel.recommendedBooks)
             }

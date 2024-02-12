@@ -12,15 +12,15 @@ struct HomeScreen: View {
     var body: some View {
         TabView {
             MainTab(navigateTo: navigateTo)
-                    .tabItem {
-                        Label("Books", systemImage: "book")
-                    }
-
+                .tabItem {
+                    Label("Books", systemImage: "book")
+                }
+            
             SearchTab(navigateTo: navigateTo)
-                    .tabItem {
-                        Label("Search", systemImage: "magnifyingglass")
-                    }
-            }.navigationBarBackButtonHidden(true)
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 

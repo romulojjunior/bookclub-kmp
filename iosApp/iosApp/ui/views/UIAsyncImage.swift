@@ -14,8 +14,8 @@ struct UIAsyncImage: View {
             switch phase {
             case .success(let image):
                 image.resizable()
-                     .aspectRatio(contentMode: .fit)
-                     .frame(width: 120, height: 180)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 120, height: 180)
             @unknown default:
                 EmptyView()
             }

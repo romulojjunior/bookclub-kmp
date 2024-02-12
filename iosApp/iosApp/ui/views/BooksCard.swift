@@ -15,7 +15,7 @@ struct BooksCard: View {
         HStack {
             UIPageHeader(label: label)
         }.padding(.horizontal, 16)
-         .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
         ScrollView(.horizontal) {
             LazyHStack {
                 ForEach(books, id: \.self) { book in

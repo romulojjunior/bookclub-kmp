@@ -23,7 +23,7 @@ class HomeViewModel : IHomeViewModel {
     var isLoading: Bool
     
     let searchBookByName: ISearchBookByNameUC
-            
+    
     func loadFavoritesBooks(name: String) {
         isLoading = true
         searchBookByName.execute(name: name) { books, error in
@@ -80,5 +80,4 @@ class HomeViewModel : IHomeViewModel {
             }
         }
     }
-    
 }

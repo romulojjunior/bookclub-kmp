@@ -29,7 +29,7 @@ struct SignInScreen: View {
             if (viewModel.exception != nil) {
                 Text("Sigin error. Try again.").foregroundStyle(.red)
             }
-
+            
             Button("SignIn") {
                 viewModel.signIn(username: username, password:  password)
                 if (viewModel.session != nil) {
@@ -37,7 +37,7 @@ struct SignInScreen: View {
                 }
             }.padding(.top, 50)
             
-            Text("Forget password").foregroundStyle(.gray).padding(30) 
+            Text("Forget password").foregroundStyle(.gray).padding(30)
         }
     }
 }
@@ -49,3 +49,4 @@ struct SignInScreen_Previews: PreviewProvider {
         SignInScreen(navigateTo: { r in })
     }
 }
+

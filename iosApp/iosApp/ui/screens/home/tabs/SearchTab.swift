@@ -37,21 +37,21 @@ struct SearchTab: View {
                     HStack {
                         Text("Result for \(searchQuery)")
                     }.padding(.horizontal, 16)
-                     .frame(maxWidth: .infinity, alignment: .leading)
-                   
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(viewModel.searchedBooks, id: \.self) { book in
-                                VStack() {
-                                    UIAsyncImage(url: book.thumbnail ?? book.smallThumbnail ?? "")
-                                    Text(book.title).font(.caption).lineLimit(2)
-                                }.padding(8)
-                            }
-                        }.padding(.horizontal, 16)
-               
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(viewModel.searchedBooks, id: \.self) { book in
+                            VStack() {
+                                UIAsyncImage(url: book.thumbnail ?? book.smallThumbnail ?? "")
+                                Text(book.title).font(.caption).lineLimit(2)
+                            }.padding(8)
+                        }
+                    }.padding(.horizontal, 16)
+                    
                 }
             }
         }
-
+        
     }
     
     private func onSearch(name: String) {
