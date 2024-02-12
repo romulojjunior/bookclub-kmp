@@ -68,6 +68,7 @@ class HomeViewModel : IHomeViewModel {
     
     func searchBookByName(name: String) {
         isLoading = true
+        searchedBooks = []
         searchBookByName.execute(name: name) { books, error in
             self.isLoading = false
             if (error != nil) {

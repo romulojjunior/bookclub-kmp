@@ -12,9 +12,7 @@ struct iOSApp: App {
 	var body: some Scene {
 		WindowGroup {
             NavigationStack(path: $navigationPath) {
-                // Default Screen
                 SignInScreen(navigateTo: { r in navigationPath.append(r) })
-                
                 .navigationDestination(for: Route.self) { route in
                     switch route {
                     case .signin: SignInScreen(navigateTo: { r in navigationPath.append(r) })

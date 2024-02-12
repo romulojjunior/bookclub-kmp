@@ -39,8 +39,6 @@ struct SignInScreen: View {
             
             Text("Forget password").foregroundStyle(.gray).padding(30) 
         }
-        
-        .navigationTitle("SignIn")
     }
 }
 
