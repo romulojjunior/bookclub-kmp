@@ -11,6 +11,6 @@ val viewModelModule = module {
     }
 
     viewModel<HomeViewModel> {
-        HomeViewModel(searchBookByNameUC = get())
+        HomeViewModel(searchBookByNameUC = get(), getFriendsByUserIdUC = get())
     }
 }

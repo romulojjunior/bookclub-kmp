@@ -26,6 +26,7 @@ fun HomeScreen(
     loadFeatureBooks: (name: String) -> Unit = {},
     loadRecommendedBooks: (name: String) -> Unit = {},
     loadFavoritesBooks: (name: String) -> Unit = {},
+    loadFriends: () -> Unit = {},
     searchBookByName: (name: String) -> Unit = {}) {
 
     var tabIndex by rememberSaveable {
@@ -49,6 +50,7 @@ fun HomeScreen(
                             loadFeatureBooks = loadFeatureBooks,
                             loadRecommendedBooks = loadRecommendedBooks,
                             loadFavoritesBooks = loadFavoritesBooks,
+                            loadFriends = loadFriends,
                         )
                     }
                 }

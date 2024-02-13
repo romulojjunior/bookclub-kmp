@@ -2,17 +2,17 @@ package com.demo.bookclubkmp.android.ui.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Card
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -23,25 +23,27 @@ import com.demo.bookclubkmp.android.MyApplicationTheme
 import com.demo.bookclubkmp.android.R
 
 @Composable
-fun  UIBookCard(title: String, imageUrl: String? = null ) {
+fun  UIAvatarCard(name: String, avatarUrl: String? = null ) {
     Surface {
-        Column(modifier = Modifier.width(140.dp).padding(8.dp),
+        Column(modifier = Modifier
+            .width(140.dp)
+            .padding(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally) {
-            Card(modifier = Modifier
-                .width(140.dp)
-                .height(200.dp)) {
-                AsyncImage(
-                    model = imageUrl,
-                    contentDescription = "Book cover",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxWidth().align(Alignment.CenterHorizontally),
-                    placeholder = painterResource(id = R.drawable.connection_error),
-                    error = painterResource(id = R.drawable.connection_error)
-                )
-            }
+            AsyncImage(
+                model = avatarUrl,
+                contentDescription = "Avatar picture",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .width(100.dp)
+                    .height(100.dp)
+                    .align(Alignment.CenterHorizontally),
+                placeholder = painterResource(id = R.drawable.connection_error),
+                error = painterResource(id = R.drawable.connection_error)
+            )
             Text(modifier = Modifier.padding(top = 8.dp),
-                text = title,
-                style = MaterialTheme.typography.bodySmall,
+                text = name,
+                style = MaterialTheme.typography.bodyMedium,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 2)
         }
@@ -50,11 +52,11 @@ fun  UIBookCard(title: String, imageUrl: String? = null ) {
 
 @Preview
 @Composable
-fun  UIBookCardPreview() {
+fun  UIAvatarCardPreview() {
     MyApplicationTheme {
-        UIBookCard(
-            title = "Book Card title sample",
-            imageUrl = "noUrl"
+        UIAvatarCard(
+            name = "User Name",
+            avatarUrl = "noUrl"
         )
     }
 }
@@ -63,11 +65,11 @@ fun  UIBookCardPreview() {
 @Preview(
     uiMode = Configuration.UI_MODE_NIGHT_YES
 )
-fun  UIBookCardNightPreview() {
+fun UIAvatarCardNightPreview() {
     MyApplicationTheme {
-        UIBookCard(
-            title = "Book Card title sample",
-            imageUrl = "noUrl"
+        UIAvatarCard(
+            name = "User Name",
+            avatarUrl = "noUrl"
         )
     }
 }

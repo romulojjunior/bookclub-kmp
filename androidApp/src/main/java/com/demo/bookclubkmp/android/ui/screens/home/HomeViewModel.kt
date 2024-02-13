@@ -4,25 +4,30 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.demo.bookclubkmp.domain.entities.Book
+import com.demo.bookclubkmp.domain.entities.Friend
 import com.demo.bookclubkmp.domain.usecases.book.ISearchBookByNameUC
+import com.demo.bookclubkmp.domain.usecases.friend.IGetFriendsByUserIdUC
 import com.demo.bookclubkmp.ui.viewmodels.IHomeViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class HomeViewModel (private val searchBookByNameUC: ISearchBookByNameUC) : ViewModel(),
+class HomeViewModel (
+    private val searchBookByNameUC: ISearchBookByNameUC,
+    private val getFriendsByUserIdUC: IGetFriendsByUserIdUC
+) : ViewModel(),
     IHomeViewModel {
     data class UIState(
         val featuredBooks: List<Book> = emptyList(),
         val recommendedBooks: List<Book> = emptyList(),
         val favoritesBooks: List<Book> = emptyList(),
         val searchResultBooks: List<Book> = emptyList(),
+        val friends: List<Friend> = emptyList(),
         val exception: Any? = null,
         val isLoading: Boolean = false
     )
 
     private val _uiState = mutableStateOf(UIState())
     val uiState = _uiState
-
 
     data class SearchUIState(
         val searchResultBooks: List<Book> = emptyList(),
@@ -88,6 +93,23 @@ class HomeViewModel (private val searchBookByNameUC: ISearchBookByNameUC) : View
             try {
                 val books = searchBookByNameUC.execute(name)
                 _uiState.value = _uiState.value.copy(favoritesBooks = books, isLoading = false)
+            } catch (e: Exception) {
+                _uiState.value = _uiState.value.copy(exception = e, isLoading = false)
+            }
+        }
+    }
+
+    override fun loadFriends() {
+        if (_uiState.value.friends.isNotEmpty()) {
+            return
+        }
+
+        _uiState.value = _uiState.value.copy(isLoading = true, exception = null)
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val userId = "MockedUserID1234"
+                val friends = getFriendsByUserIdUC.execute(userId)
+                _uiState.value = _uiState.value.copy(friends = friends, isLoading = false)
             } catch (e: Exception) {
                 _uiState.value = _uiState.value.copy(exception = e, isLoading = false)
             }

@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             NavHost(
                 navController = navController,
-                startDestination = AppRoute.signInScreenPath
+                startDestination = AppRoute.homeScreenPath
             ) {
                 composable(AppRoute.signInScreenPath) {
                     val authViewModel = remember {
@@ -51,6 +51,7 @@ class MainActivity : ComponentActivity() {
                             loadFeatureBooks = homeViewModel::loadFeatureBooks,
                             loadRecommendedBooks = homeViewModel::loadRecommendedBooks,
                             loadFavoritesBooks = homeViewModel::loadFavoritesBooks,
+                            loadFriends = homeViewModel::loadFriends,
                             searchBookByName = homeViewModel::searchBookByName)
                     }
                 }

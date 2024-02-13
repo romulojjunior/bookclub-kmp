@@ -8,4 +8,6 @@ interface IHomeViewModel {
     fun loadRecommendedBooks(name: String)
 
     fun loadFavoritesBooks(name: String)
+
+    fun loadFriends()
 }

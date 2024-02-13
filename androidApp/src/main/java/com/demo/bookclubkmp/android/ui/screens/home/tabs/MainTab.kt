@@ -14,11 +14,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.demo.bookclubkmp.android.MyApplicationTheme
+import com.demo.bookclubkmp.android.ui.components.UIAvatarCard
 import com.demo.bookclubkmp.android.ui.components.UIBookCard
 import com.demo.bookclubkmp.android.ui.components.UIError
 import com.demo.bookclubkmp.android.ui.components.UILoading
 import com.demo.bookclubkmp.android.ui.components.UIPageHeader
 import com.demo.bookclubkmp.domain.entities.Book
+import com.demo.bookclubkmp.domain.entities.Friend
 import java.net.UnknownHostException
 
 @Composable
@@ -26,12 +28,14 @@ fun MainTab(
     uiState: MutableState<HomeViewModel.UIState> = mutableStateOf(HomeViewModel.UIState()),
     loadFeatureBooks: (name: String) -> Unit = {},
     loadRecommendedBooks: (name: String) -> Unit = {},
-    loadFavoritesBooks: (name: String) -> Unit = {}) {
+    loadFavoritesBooks: (name: String) -> Unit = {},
+    loadFriends: () -> Unit = {}) {
 
     LaunchedEffect(Unit) {
         loadFeatureBooks("Travel")
         loadRecommendedBooks("Kotlin")
         loadFavoritesBooks("Android")
+        loadFriends()
     }
 
     if (uiState.value.exception is UnknownHostException) {
@@ -40,6 +44,7 @@ fun MainTab(
                 loadFeatureBooks("Travel")
                 loadRecommendedBooks("Kotlin")
                 loadFavoritesBooks("Android")
+                loadFriends()
             }
         )
         return
@@ -52,6 +57,18 @@ fun MainTab(
 
     Surface {
         LazyColumn(Modifier.fillMaxSize(), content = {
+            item {
+                Column {
+                    UIPageHeader(text = "Friends")
+                    LazyRow {
+                        items(uiState.value.friends.size) { index ->
+                            val friend: Friend = uiState.value.friends[index]
+                            UIAvatarCard(name = friend.name, avatarUrl = friend.avatarURL)
+                        }
+                    }
+                }
+            }
+
             item {
                 Column {
                     UIPageHeader(text = "Favorites")

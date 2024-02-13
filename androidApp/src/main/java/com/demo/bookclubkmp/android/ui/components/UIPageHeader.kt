@@ -30,7 +30,7 @@ fun  UIPageHeaderPreview() {
 @Preview(
     uiMode = Configuration.UI_MODE_NIGHT_YES
 )
-fun  UIPageHeaderPreviewNight() {
+fun  UIPageHeaderNightPreview() {
     MyApplicationTheme {
         UIPageHeader("Header")
     }
