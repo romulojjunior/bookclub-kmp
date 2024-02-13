@@ -12,7 +12,8 @@ struct MainTab: View {
     private let navigateTo: (Route) -> Void
     
     @State private var viewModel = HomeViewModel(
-        searchBookByName: AppDIKoin().searchBookByNameUC
+        searchBookByName: AppDIKoin().searchBookByNameUC,
+        getFriendsByUserIdUC: AppDIKoin().getFriendsByUserIdUC
     )
     
     var body: some View {
@@ -27,6 +28,10 @@ struct MainTab: View {
         
         
         ScrollView {
+            if (!viewModel.friends.isEmpty) {
+                FriendsCard(label: "Friends", friends: viewModel.friends)
+            }
+            
             if (!viewModel.recommendedBooks.isEmpty) {
                 BooksCard(label: "Favorites", books: viewModel.favoritesBooks)
             }
@@ -46,6 +51,7 @@ struct MainTab: View {
         viewModel.loadFavoritesBooks(name: "Travel")
         viewModel.loadFeatureBooks(name: "iOS")
         viewModel.loadRecommendedBooks(name: "Kotlin")
+        viewModel.loadFriends()
     }
 }
 

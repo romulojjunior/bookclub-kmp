@@ -12,7 +12,8 @@ struct SearchTab: View {
     
     @State private var searchQuery: String = ""
     @State private var viewModel = HomeViewModel(
-        searchBookByName: AppDIKoin().searchBookByNameUC
+        searchBookByName: AppDIKoin().searchBookByNameUC,
+        getFriendsByUserIdUC: AppDIKoin().getFriendsByUserIdUC
     )
     
     let columns = [

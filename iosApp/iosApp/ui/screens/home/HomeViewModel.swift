@@ -3,12 +3,14 @@ import shared
 
 @Observable
 class HomeViewModel : IHomeViewModel {
-    
-    init(searchBookByName: ISearchBookByNameUC) {
+        
+    init(searchBookByName: ISearchBookByNameUC, getFriendsByUserIdUC: IGetFriendsByUserIdUC) {
         self.searchBookByName = searchBookByName
+        self.getFriendsByUserIdUC = getFriendsByUserIdUC
         self.featuredBooks = []
         self.recommendedBooks = []
         self.favoritesBooks = []
+        self.friends = []
         self.searchedBooks = []
         self.exception = nil
         self.isLoading = false
@@ -17,12 +19,14 @@ class HomeViewModel : IHomeViewModel {
     var featuredBooks: [Book]
     var recommendedBooks: [Book]
     var favoritesBooks: [Book]
+    var friends: [Friend]
     var searchedBooks: [Book]
     
     var exception: Any?
     var isLoading: Bool
     
     let searchBookByName: ISearchBookByNameUC
+    let getFriendsByUserIdUC: IGetFriendsByUserIdUC
     
     func loadFavoritesBooks(name: String) {
         isLoading = true
@@ -62,6 +66,20 @@ class HomeViewModel : IHomeViewModel {
             } else {
                 self.exception = nil
                 self.recommendedBooks = books ?? []
+            }
+        }
+    }
+    
+    func loadFriends() {
+        isLoading = true
+        getFriendsByUserIdUC.execute(userId: "123MockedUserId") { friends, error in
+            self.isLoading = false
+            if (error != nil) {
+                self.friends = []
+                self.exception = error
+            } else {
+                self.exception = nil
+                self.friends = friends ?? []
             }
         }
     }
