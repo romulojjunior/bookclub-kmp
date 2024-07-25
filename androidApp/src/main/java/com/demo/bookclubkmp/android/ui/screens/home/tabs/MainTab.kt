@@ -38,7 +38,7 @@ fun MainTab(
         loadFriends()
     }
 
-    if (uiState.value.exception is UnknownHostException) {
+    if (uiState.value.exception is Exception) {
         UIError(
             onRetry = {
                 loadFeatureBooks("Travel")

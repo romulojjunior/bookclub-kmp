@@ -7,6 +7,12 @@ interface ISignInUC {
     @Throws(Throwable::class, InvalidUsernameException::class, InvalidPasswordException::class)
     suspend fun execute(username: String, password: String): Session
 }
+
+// Exceptions
+class InvalidUsernameException: Exception()
+class InvalidPasswordException: Exception()
+
+// Implementation
 class SignInUC(private val authRepository: IAuthRepository) : ISignInUC {
     override
     suspend fun execute(username: String, password: String): Session {
@@ -21,7 +27,3 @@ class SignInUC(private val authRepository: IAuthRepository) : ISignInUC {
         return authRepository.signIn()
     }
 }
-
-// Sign-in Exceptions
-class InvalidUsernameException: Exception()
-class InvalidPasswordException: Exception()

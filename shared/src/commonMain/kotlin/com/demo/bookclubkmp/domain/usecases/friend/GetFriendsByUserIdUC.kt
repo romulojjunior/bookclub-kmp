@@ -6,6 +6,7 @@ import com.demo.bookclubkmp.domain.repositories.IFriendRepository
 interface IGetFriendsByUserIdUC {
     suspend fun execute(userId: String): List<Friend>
 }
+
 class GetFriendsByUserIdUC(
     private val friendRepository: IFriendRepository
 ) : IGetFriendsByUserIdUC {
