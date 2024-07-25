@@ -1,5 +1,7 @@
 package com.demo.bookclubkmp.di
 
+import com.demo.bookclubkmp.data.apis.BookApi
+import com.demo.bookclubkmp.data.apis.IBookApi
 import com.demo.bookclubkmp.domain.repositories.AuthRepository
 import com.demo.bookclubkmp.domain.repositories.BookRepository
 import com.demo.bookclubkmp.domain.repositories.FriendRepository
@@ -12,13 +14,19 @@ import com.demo.bookclubkmp.domain.usecases.book.ISearchBookByNameUC
 import com.demo.bookclubkmp.domain.usecases.book.SearchBookByNameUC
 import com.demo.bookclubkmp.domain.usecases.friend.GetFriendsByUserIdUC
 import com.demo.bookclubkmp.domain.usecases.friend.IGetFriendsByUserIdUC
+import io.ktor.client.HttpClient
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
+val apisModules = module {
+    single<HttpClient> { HttpClient() }
+    single<IBookApi>{ BookApi(get()) }
+}
+
 val repositoryModules = module {
-    single<IBookRepository> { BookRepository() }
+    single<IBookRepository> { BookRepository(get()) }
     single<IAuthRepository> { AuthRepository() }
     single<IFriendRepository> { FriendRepository() }
 }
@@ -37,7 +45,7 @@ val usecaseModules = module {
 object AppDIKoin : KoinComponent {
     init {
         startKoin {
-            modules(repositoryModules, usecaseModules)
+            modules(apisModules, repositoryModules, usecaseModules)
         }
     }
 
