@@ -7,6 +7,11 @@ interface ISearchBookByNameUC {
     @Throws(Throwable::class, InvalidBookNameException::class)
     suspend fun execute(name: String): List<Book>
 }
+
+// Exceptions
+class InvalidBookNameException: Exception()
+
+// Implementation
 class SearchBookByNameUC(private val bookRepository: IBookRepository) : ISearchBookByNameUC {
     override
     suspend fun execute(name: String): List<Book> {
@@ -17,6 +22,3 @@ class SearchBookByNameUC(private val bookRepository: IBookRepository) : ISearchB
         return bookRepository.searchByName(name)
     }
 }
-
-// Exceptions
-class InvalidBookNameException: Exception()
