@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             NavHost(
                 navController = navController,
-                startDestination = AppRoute.homeScreenPath
+                startDestination = AppRoute.signInScreenPath
             ) {
                 composable(AppRoute.signInScreenPath) {
                     val authViewModel = remember {
